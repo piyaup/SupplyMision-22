@@ -16,6 +16,12 @@ function setup() {
 	createCanvas(800, 700);
 	rectMode(CENTER);
 	
+	dropZone = createSprite(400,650,300,10);
+	dropZone.shapeColor = 'blue';
+	dropZone2 = createSprite(250,605,10,100);
+	dropZone2.shapeColor = 'blue';
+	dropZone3 = createSprite(550,605,10,100);
+	dropZone3.shapeColor = 'blue';
 
 	packageSprite=createSprite(width/2, 200, 10,10);
 	packageSprite.addImage(packageIMG)
@@ -28,22 +34,16 @@ function setup() {
 	groundSprite=createSprite(width/2, height-35, width,10);
 	groundSprite.shapeColor=color(255)
 
-
 	engine = Engine.create();
 	world = engine.world;
      //create a box 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.5, isStatic:false});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {isStatic:false});
 	World.add(world, packageBody);
 	
-
 	//Create a Ground
-	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
-	 World.add(world, ground);
- 
-
-
+	ground = Bodies.rectangle(width/2, 650, width, 45 , {isStatic:true} );
+	 World.add(world, ground);     
 }
-
 
 function draw() {
   
@@ -59,6 +59,3 @@ function draw() {
   }
   drawSprites();
 }
-
-
-
